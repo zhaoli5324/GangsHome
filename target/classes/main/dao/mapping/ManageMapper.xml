@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main.dao.IManageDataDao">
+	<select id="queryActivityLog" parameterType="main.pojo.ActivityLogPojo" resultType="main.pojo.ActivityLogPojo">
+		SELECT
+			a.id id,
+			a.member_id memberId,
+			m.NAME memberName,
+			a.activity1,
+			a.activity2,
+			a.activity3,
+			a.activity4,
+			a.activity5,
+			a.activity6,
+			a.activity7,
+			a.activity8,
+			a.activity9,
+			a.activity10,
+			a.activity11,
+			a.activity12,
+			a.activity13,
+			a.activity14,
+			a.activity15,
+			a.activity16,
+			a.activity17,
+			a.activity18,
+			a.activity19,
+			a.activity20,
+			a.relative_template relativeTemplate
+		FROM
+			config_member m,
+			log_activity a
+		<trim prefix="where" prefixOverrides="AND">
+			a.member_id = m.id
+			<if test="memberName != null and memberName != '' ">
+				and m.name like  #{memberName}
+			</if>
+			<if test="startTime != null and startTime != '' ">
+				AND a.time_week &gt;= #{startTime}
+			</if>
+			<if test="endTime != null and endTime != '' ">
+				AND a.time_week &lt;= #{endTime}
+			</if>
+			<if test="relativeTemplate != null and relativeTemplate != '' ">
+				AND a.relative_template &lt;= #{relativeTemplate}
+			</if>
+		</trim>
+	</select>
+	
+</mapper>
