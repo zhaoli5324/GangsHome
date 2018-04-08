@@ -1,0 +1,36 @@
+<context:component-scan/> 扫描指定的包中的类上的注解，常用的注解有：
+
+@Controller	声明Action组件
+@Service	声明Service组件	@Service("name")
+@Repository	声明Dao组件
+@Component	泛指组件，当不好归类时，可以使用这个
+@RequestMapping("/menu")	请求映射
+@Resource	用于注入，（j2ee提供）默认按名称匹配	@Resource(name="myResource")
+@Autowired	用于注入，（spring提供）默认按类型匹配
+@ResponseBody	将使用该注释方法的返回结果直接写入Http response body中，不会被解析为跳转路径。（例如请求json数据）
+@Scope("prototype")	设定bean的作用域
+
+<mvc:annotation-driven> 
+会自动注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean，是spring MVC为@Controller分发请求所必须的
+并提供了：	数据绑定支持
+		@NumberFormatannotation支持
+		@DataTimeFormat支持
+		@Valid支持
+		读写XML的支持（JAXB）
+		读写JSON的支持（jackson）
+		
+-------------------------------------------------------------------------------------------------------------------
+
+十一、如何实现全局的异常处理？
+1.使用Spring MVC提供的简单异常处理器SimpleMappingExceptionResolver
+2.实现Spring的异常处理接口HandlerExceptionResolver自定义自己的异常处理器
+3.使用@ExceptionHandler注解实现异常处理
+
+-------------------------------------------------------------------------------------------------------------------
+
+https://www.cnblogs.com/baiduligang/p/4247164.html
+ 十四、转发与重定向
+ 重定向中：
+ 	可以通过redirect/forward:/url 方式转到另一个Action进行连续的处理
+ 	可以通过redirect：url防止表单重复提交
+ 

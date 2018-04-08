@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="fhz.dao.IDao2Mybatis">
+	<select id="select" resultType="fhz.pojo.FhzTest"> 
+		SELECT fhz_test.co1,fhz_test.co2 FROM fhz_test where co1='1'
+	</select>
+	
+</mapper>
