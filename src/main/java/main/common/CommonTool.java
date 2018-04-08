@@ -8,6 +8,7 @@ public class CommonTool {
   public static <T> T JSONStr2JSONObj(String jsonStr,T c){
     JSONObject a1 = JSONObject.fromObject(jsonStr);
     T t2 = (T) JSONObject.toBean(a1, c.getClass());
+    /////////////////////
     return t2;
   };
   
